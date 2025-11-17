@@ -16,8 +16,8 @@ public class HelloWorldManager : MonoBehaviour
         // Setup area to add UI elements
         GUILayout.BeginArea(new Rect(10, 10, 300, 300));
 
-        // If we are not a client or sever, we need buttons to start the client or server
-        if (!m_NetworkManager.IsClient && !m_NetworkManager_NetworkManager.IsServer)
+        // If we are not a client or server, we need buttons to start the client or server
+        if (!m_NetworkManager.IsClient && !m_NetworkManager.IsServer)
         {
             StartButtons();
         }
@@ -31,7 +31,7 @@ public class HelloWorldManager : MonoBehaviour
 
     private void StartButtons()
     {
-        // Creates buttons
+        // Creates buttons for us!
         if (GUILayout.Button("Host")) m_NetworkManager.StartHost();
         if (GUILayout.Button("Client")) m_NetworkManager.StartClient();
         if (GUILayout.Button("Server")) m_NetworkManager.StartServer();
@@ -39,11 +39,12 @@ public class HelloWorldManager : MonoBehaviour
 
     private void StatusLabels()
     {
-        var mode = m_NetworkManager.IsHost ? "Host" : m_NetworkManager.IsServer ? "Server" : "client";
+        var mode = m_NetworkManager.IsHost ?
+            "Host" : m_NetworkManager.IsServer ? "Server" : "Client";
 
         // Creates labels for us so we remember what each window is
-        GUILayout.Label("Transport: " + m_NetworkManager.NetworkConfig.NetworkTransport.GetType().Name);
+        GUILayout.Label("Transport: " +
+            m_NetworkManager.NetworkConfig.NetworkTransport.GetType().Name);
         GUILayout.Label("Mode: " + mode);
     }
-
 }
